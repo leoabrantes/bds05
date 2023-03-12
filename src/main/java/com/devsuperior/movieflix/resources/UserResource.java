@@ -11,7 +11,7 @@ import com.devsuperior.movieflix.dto.UserDTO;
 import com.devsuperior.movieflix.services.UserService;
 
 @RestController
-@RequestMapping(value = "/users")
+@RequestMapping(value = "/users/profile")
 public class UserResource {
 	
 	@Autowired

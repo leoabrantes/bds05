@@ -1,6 +1,7 @@
 package com.devsuperior.movieflix.entities;
 
 import java.io.Serializable;
+import java.util.Objects;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -35,20 +36,21 @@ public class Genre implements Serializable {
 		this.id = id;
 	}
 
-	public String getAuthority() {
+	public String getName() {
 		return name;
 	}
 
-	public void setAuthority(String authority) {
-		this.name = authority;
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public static long getSerialversionuid() {
+		return serialVersionUID;
 	}
 
 	@Override
 	public int hashCode() {
-		final int prime = 31;
-		int result = 1;
-		result = prime * result + ((id == null) ? 0 : id.hashCode());
-		return result;
+		return Objects.hash(id, name);
 	}
 
 	@Override
@@ -60,11 +62,11 @@ public class Genre implements Serializable {
 		if (getClass() != obj.getClass())
 			return false;
 		Genre other = (Genre) obj;
-		if (id == null) {
-			if (other.id != null)
-				return false;
-		} else if (!id.equals(other.id))
-			return false;
-		return true;
+		return Objects.equals(id, other.id) && Objects.equals(name, other.name);
 	}
+
+	
+	
+	
+	
 }

@@ -2,12 +2,10 @@ package com.devsuperior.movieflix.entities;
 
 import java.io.Serializable;
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Objects;
 import java.util.Set;
-import java.util.stream.Collectors;
 
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -16,14 +14,9 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
-import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
-
-import org.springframework.security.core.GrantedAuthority;
-import org.springframework.security.core.authority.SimpleGrantedAuthority;
-import org.springframework.security.core.userdetails.UserDetails;
 
 @Entity
 @Table(name = "tb_movie")
@@ -45,7 +38,7 @@ public class Movie implements Serializable {
 		inverseJoinColumns = @JoinColumn(name = "genre_id"))	
 	private Set<Genre> roles = new HashSet<>();
 	
-	@OneToMany(mappedBy = "review")
+	@OneToMany(mappedBy = "movie")
 	private List<Review> notifications = new ArrayList<>();
 	
 	public Movie() {
