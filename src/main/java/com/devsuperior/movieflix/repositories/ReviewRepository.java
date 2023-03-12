@@ -5,6 +5,6 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import com.devsuperior.movieflix.entities.Enrollment;
 import com.devsuperior.movieflix.entities.pk.EnrollmentPK;
 
-public interface EnrollmentRepository extends JpaRepository <Enrollment, EnrollmentPK> {
+public interface ReviewRepository extends JpaRepository <Review, EnrollmentPK> {
 
 }

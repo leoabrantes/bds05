@@ -6,13 +6,13 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.devsuperior.movieflix.dto.DeliverRevisionDTO;
 import com.devsuperior.movieflix.entities.Deliver;
-import com.devsuperior.movieflix.repositories.DeliverRepository;
+import com.devsuperior.movieflix.repositories.MovieRepository;
 
 @Service
 public class DeliverService {
 
 	@Autowired
-	private DeliverRepository repository;
+	private MovieRepository repository;
 	
 	@Transactional
 	public void saveRevision(Long id, DeliverRevisionDTO dto) {
