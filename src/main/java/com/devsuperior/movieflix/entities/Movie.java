@@ -39,13 +39,13 @@ public class Movie implements Serializable {
 	private Set<Genre> roles = new HashSet<>();
 	
 	@OneToMany(mappedBy = "movie")
-	private List<Review> notifications = new ArrayList<>();
+	private List<Review> reviews = new ArrayList<>();
 	
 	public Movie() {
 	}
 
 	public Movie(Long id, String title, String subTitle, Integer year, String imgUrl, String synopsis, Set<Genre> roles,
-			List<Review> notifications) {
+			List<Review> reviews) {
 		super();
 		this.id = id;
 		this.title = title;
@@ -54,7 +54,7 @@ public class Movie implements Serializable {
 		this.imgUrl = imgUrl;
 		this.synopsis = synopsis;
 		this.roles = roles;
-		this.notifications = notifications;
+		this.reviews = reviews;
 	}
 
 	public Long getId() {
@@ -114,11 +114,11 @@ public class Movie implements Serializable {
 	}
 
 	public List<Review> getNotifications() {
-		return notifications;
+		return reviews;
 	}
 
 	public void setNotifications(List<Review> notifications) {
-		this.notifications = notifications;
+		this.reviews = notifications;
 	}
 
 	public static long getSerialversionuid() {
@@ -127,7 +127,7 @@ public class Movie implements Serializable {
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(id, imgUrl, notifications, roles, subTitle, synopsis, title, year);
+		return Objects.hash(id, imgUrl, reviews, roles, subTitle, synopsis, title, year);
 	}
 
 	@Override
@@ -140,7 +140,7 @@ public class Movie implements Serializable {
 			return false;
 		Movie other = (Movie) obj;
 		return Objects.equals(id, other.id) && Objects.equals(imgUrl, other.imgUrl)
-				&& Objects.equals(notifications, other.notifications) && Objects.equals(roles, other.roles)
+				&& Objects.equals(reviews, other.reviews) && Objects.equals(roles, other.roles)
 				&& Objects.equals(subTitle, other.subTitle) && Objects.equals(synopsis, other.synopsis)
 				&& Objects.equals(title, other.title) && Objects.equals(year, other.year);
 	}
