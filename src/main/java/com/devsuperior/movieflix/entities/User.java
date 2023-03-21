@@ -35,14 +35,13 @@ public class User implements UserDetails,  Serializable {
 	private String email;
 	private String password;
 	
-	@ManyToMany(fetch = FetchType.EAGER)
 	@JoinTable(name = "tb_user_role",
 		joinColumns = @JoinColumn(name = "user_id"),
 		inverseJoinColumns = @JoinColumn(name = "role_id"))	
 	private Set<Role> roles = new HashSet<>();
 	
 	@OneToMany(mappedBy = "user")
-	private List<Review> notifications = new ArrayList<>();
+	private List<Review> reviews = new ArrayList<>();
 	
 	public User() {
 	}
@@ -91,8 +90,8 @@ public class User implements UserDetails,  Serializable {
 		return roles;
 	}
 
-	public List<Review> getNotifications() {
-		return notifications;
+	public List<Review> getReviews() {
+		return reviews;
 	}
 
 	@Override

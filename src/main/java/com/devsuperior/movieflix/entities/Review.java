@@ -26,7 +26,7 @@ public class Review implements Serializable {
 	private User user;
 	
 	@ManyToOne
-	@JoinColumn(name = "user_id")
+	@JoinColumn(name = "movie_id")
 	private Movie movie;
 	
 	public Review() {
@@ -93,9 +93,6 @@ public class Review implements Serializable {
 		return Objects.equals(id, other.id) && Objects.equals(movie, other.movie) && Objects.equals(text, other.text)
 				&& Objects.equals(user, other.user);
 	}
-
-	
-	
 	
 	
 }

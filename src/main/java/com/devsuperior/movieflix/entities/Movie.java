@@ -2,10 +2,8 @@ package com.devsuperior.movieflix.entities;
 
 import java.io.Serializable;
 import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.List;
 import java.util.Objects;
-import java.util.Set;
 
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -36,7 +34,7 @@ public class Movie implements Serializable {
 	@JoinTable(name = "tb_movie_genre",
 		joinColumns = @JoinColumn(name = "movie_id"),
 		inverseJoinColumns = @JoinColumn(name = "genre_id"))	
-	private Set<Genre> roles = new HashSet<>();
+	private Genre genre;
 	
 	@OneToMany(mappedBy = "movie")
 	private List<Review> reviews = new ArrayList<>();
@@ -44,8 +42,8 @@ public class Movie implements Serializable {
 	public Movie() {
 	}
 
-	public Movie(Long id, String title, String subTitle, Integer year, String imgUrl, String synopsis, Set<Genre> roles,
-			List<Review> reviews) {
+	public Movie(Long id, String title, String subTitle, Integer year, String imgUrl, String synopsis, Genre genre)			 
+			{
 		super();
 		this.id = id;
 		this.title = title;
@@ -53,8 +51,7 @@ public class Movie implements Serializable {
 		this.year = year;
 		this.imgUrl = imgUrl;
 		this.synopsis = synopsis;
-		this.roles = roles;
-		this.reviews = reviews;
+		this.genre = genre;
 	}
 
 	public Long getId() {
@@ -105,29 +102,25 @@ public class Movie implements Serializable {
 		this.synopsis = synopsis;
 	}
 
-	public Set<Genre> getRoles() {
-		return roles;
+	public Genre getGenre() {
+		return genre;
 	}
 
-	public void setRoles(Set<Genre> roles) {
-		this.roles = roles;
+	public void setGenre(Genre genre) {
+		this.genre = genre;
 	}
 
-	public List<Review> getNotifications() {
+	public List<Review> getReviews() {
 		return reviews;
 	}
 
-	public void setNotifications(List<Review> notifications) {
-		this.reviews = notifications;
-	}
-
-	public static long getSerialversionuid() {
-		return serialVersionUID;
+	public void setReviews(List<Review> reviews) {
+		this.reviews = reviews;
 	}
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(id, imgUrl, reviews, roles, subTitle, synopsis, title, year);
+		return Objects.hash(genre, id, imgUrl, reviews, subTitle, synopsis, title, year);
 	}
 
 	@Override
@@ -139,13 +132,11 @@ public class Movie implements Serializable {
 		if (getClass() != obj.getClass())
 			return false;
 		Movie other = (Movie) obj;
-		return Objects.equals(id, other.id) && Objects.equals(imgUrl, other.imgUrl)
-				&& Objects.equals(reviews, other.reviews) && Objects.equals(roles, other.roles)
+		return Objects.equals(genre, other.genre) && Objects.equals(id, other.id)
+				&& Objects.equals(imgUrl, other.imgUrl) && Objects.equals(reviews, other.reviews)
 				&& Objects.equals(subTitle, other.subTitle) && Objects.equals(synopsis, other.synopsis)
 				&& Objects.equals(title, other.title) && Objects.equals(year, other.year);
 	}
 
-	
-	
 	
 }
