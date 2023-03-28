@@ -11,16 +11,16 @@ import com.devsuperior.movieflix.dto.UserDTO;
 import com.devsuperior.movieflix.services.UserService;
 
 @RestController
-@RequestMapping(value = "/users/profile")
+@RequestMapping(value = "/users")
 public class UserResource {
 	
 	@Autowired
 	private UserService service;
 	
-	@GetMapping(value = "/{id}")
-	public ResponseEntity<UserDTO> findById(@PathVariable Long id){
-		UserDTO dto = service.findById(id);
-		return ResponseEntity.ok().body(dto);
+	@GetMapping(value = "/profile")
+	public ResponseEntity<UserDTO> findUser(){
+		
+		return ResponseEntity.ok().body(service.findUser());
 		
 	}
 
